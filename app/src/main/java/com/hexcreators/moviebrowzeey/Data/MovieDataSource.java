@@ -3,6 +3,7 @@ package com.hexcreators.moviebrowzeey.Data;
 import android.support.annotation.NonNull;
 
 import com.hexcreators.moviebrowzeey.Data.Model.Movie;
+import com.hexcreators.moviebrowzeey.Data.Model.Results;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface MovieDataSource {
 
     interface LoadMoviesCallBack{
 
-        void onSuccess(List<Movie> movies);
+        void onSuccess(List<Results> movies);
 
         void onFailure(Throwable throwable);
 

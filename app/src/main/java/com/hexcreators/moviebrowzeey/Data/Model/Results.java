@@ -3,6 +3,7 @@ package com.hexcreators.moviebrowzeey.Data.Model;
 import java.util.List;
 
 public class Results {
+
     private Double vote_average;
 
     private String backdrop_path;
@@ -29,7 +30,7 @@ public class Results {
 
     private Boolean video;
 
-    private Integer popularity;
+    private Double popularity;
 
 
     public Double getVote_average() {
@@ -136,11 +137,11 @@ public class Results {
         this.video = video;
     }
 
-    public Integer getPopularity() {
+    public Double getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(Integer popularity) {
+    public void setPopularity(Double popularity) {
         this.popularity = popularity;
     }
 }
