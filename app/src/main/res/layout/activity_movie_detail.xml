@@ -365,6 +365,7 @@
                     android:layout_height="200dp">
 
                     <com.facebook.shimmer.ShimmerFrameLayout
+                        android:visibility="gone"
                         android:id="@+id/shimmer_suggestion"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
@@ -378,6 +379,15 @@
                             <include layout="@layout/item_suggest_movie" />
                         </LinearLayout>
                     </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:id="@+id/rview_suggestions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </android.support.v7.widget.RecyclerView>
 
                 </LinearLayout>
 

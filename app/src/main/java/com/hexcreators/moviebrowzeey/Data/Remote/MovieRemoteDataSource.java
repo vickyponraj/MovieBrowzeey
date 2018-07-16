@@ -21,6 +21,36 @@ public class MovieRemoteDataSource implements MovieDataSource {
     private static MovieRemoteDataSource INSTANCE = null;
 
     @Override
+    public void getMovieSuggestions(@NonNull Integer id, @NonNull final LoadMoviesCallBack callBack) {
+        MovieDataApiService movieDataApiService = RetrofitBase.getRetrofitInstance().create(MovieDataApiService.class);
+
+        Call<NowPlayingResponse> nowPlayingResponse = movieDataApiService.getSimilarMovies(id,getApiKey());
+
+        nowPlayingResponse.enqueue(new Callback<NowPlayingResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<NowPlayingResponse> call, @NonNull Response<NowPlayingResponse> response) {
+                Log.d(TAG, "getMovies onResponse");
+
+                List<Results> results = response.body().getResults();
+                if (results != null) {
+                    Log.d(TAG, "getMovies != null");
+                    callBack.onSuccess(results);
+                } else {
+                    Log.d(TAG, "getMovies == null");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NowPlayingResponse> call, Throwable t) {
+                Log.d(TAG, "getMovies onFailure");
+                Log.d(TAG, t.getMessage());
+
+                callBack.onFailure(t);
+            }
+        });
+    }
+
+    @Override
     public void getMovie(@NonNull final Integer movieId, @NonNull final LoadMovieCallBack callBack) {
         MovieDataApiService movieDataApiService = RetrofitBase.getRetrofitInstance().create(MovieDataApiService.class);
 

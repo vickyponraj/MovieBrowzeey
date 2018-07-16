@@ -13,9 +13,11 @@ public interface MovieDataApiService {
     @GET("movie/{movie_id}")
     Call<Movie> getMovie(@Path("movie_id") int movieId, @Query("api_key") String api_key);
 
-
     @GET("movie/now_playing")
     Call<NowPlayingResponse> getNowPlayingResponse(@Query("api_key") String api_key);
+
+    @GET("movie/{movie_id}/similar")
+    Call<NowPlayingResponse> getSimilarMovies(@Path("movie_id") int movieId, @Query("api_key") String api_key);
 
 
 }

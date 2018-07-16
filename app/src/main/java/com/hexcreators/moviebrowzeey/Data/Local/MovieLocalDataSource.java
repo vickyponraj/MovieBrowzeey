@@ -19,13 +19,10 @@ public class MovieLocalDataSource implements MovieDataSource {
     }
 
 
+    @Override
+    public void getMovieSuggestions(@NonNull Integer id, @NonNull LoadMoviesCallBack callBack) {
 
-
-
-
-
-
-
+    }
 
     @Override
     public void getMovie(@NonNull Integer movieId, @NonNull LoadMovieCallBack callBack) {

@@ -10,7 +10,7 @@ public class Results {
 
     private Boolean adult;
 
-    private String id;
+    private Integer id;
 
     private String title;
 
@@ -55,14 +55,6 @@ public class Results {
 
     public void setAdult(Boolean adult) {
         this.adult = adult;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -143,5 +135,13 @@ public class Results {
 
     public void setPopularity(Double popularity) {
         this.popularity = popularity;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

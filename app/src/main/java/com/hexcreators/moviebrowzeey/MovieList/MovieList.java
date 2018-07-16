@@ -1,5 +1,6 @@
 package com.hexcreators.moviebrowzeey.MovieList;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,14 +9,17 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hexcreators.moviebrowzeey.Data.Local.MovieLocalDataSource;
+import com.hexcreators.moviebrowzeey.Data.Model.Movie;
 import com.hexcreators.moviebrowzeey.Data.Model.Results;
 import com.hexcreators.moviebrowzeey.Data.MovieRepository;
 import com.hexcreators.moviebrowzeey.Data.Remote.MovieRemoteDataSource;
+import com.hexcreators.moviebrowzeey.MovieDetail.MovieDetail;
 import com.hexcreators.moviebrowzeey.R;
 import com.hexcreators.moviebrowzeey.Z_AppUtills.ItemDecorationGrid;
 
 import java.util.List;
 
+import static com.hexcreators.moviebrowzeey.Z_AppUtills.AppUtills.ClickedData_TAG;
 import static com.hexcreators.moviebrowzeey.Z_AppUtills.AppUtills.prepareDataSource;
 
 public class MovieList extends AppCompatActivity implements MovieListContract.View {
@@ -75,6 +79,8 @@ public class MovieList extends AppCompatActivity implements MovieListContract.Vi
 
     private void openMovie(Results result) {
         String movieJSON = new Gson().toJson(result);
-
+        Intent openMovie = new Intent(MovieList.this, MovieDetail.class);
+        openMovie.putExtra(ClickedData_TAG,movieJSON);
+        startActivity(openMovie);
     }
 }

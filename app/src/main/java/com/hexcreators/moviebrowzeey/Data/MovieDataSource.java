@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface MovieDataSource {
 
+    void getMovieSuggestions(@NonNull Integer id,@NonNull LoadMoviesCallBack callBack);
+
     interface LoadMovieCallBack{
 
         void onSuccess(Movie movie);

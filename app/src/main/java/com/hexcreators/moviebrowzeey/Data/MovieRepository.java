@@ -18,6 +18,20 @@ public class MovieRepository implements MovieDataSource {
 
 
     @Override
+    public void getMovieSuggestions(@NonNull Integer id, @NonNull LoadMoviesCallBack callBack) {
+        if (INSTANCE == null) {
+            callBack.onFailure(new Exception("MovieRepository NullPointer Exception"));
+        }
+        if (movieRemoteDataSource == null) {
+            callBack.onFailure(new Exception("MovieRemoteDataSource NullPointer Exception"));
+        }
+        if (movieLocalDataSource == null) {
+            callBack.onFailure(new Exception("MovieLocalDataSource NullPointer Exception"));
+        }
+        movieRemoteDataSource.getMovieSuggestions(id,callBack);
+    }
+
+    @Override
     public void getMovie(@NonNull Integer movieId, @NonNull LoadMovieCallBack callBack) {
         if (INSTANCE == null) {
             callBack.onFailure(new Exception("MovieRepository NullPointer Exception"));
