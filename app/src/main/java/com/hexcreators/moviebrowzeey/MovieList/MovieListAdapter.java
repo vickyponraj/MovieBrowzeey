@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.hexcreators.moviebrowzeey.Data.Model.Results;
 import com.hexcreators.moviebrowzeey.R;
@@ -35,12 +36,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @NonNull
     @Override
-    public  RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int item_layout = viewType == 0 ? R.layout.item_list_movie : R.layout.item_suggest_movie;
-        if(viewType==0){
+        if (viewType == 0) {
             View rootView = LayoutInflater.from(parent.getContext()).inflate(item_layout, parent, false);
             return new ListViewHolder(rootView);
-        }else {
+        } else {
             View rootView = LayoutInflater.from(parent.getContext()).inflate(item_layout, parent, false);
             return new CardViewHolder(rootView);
         }
@@ -49,9 +50,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(mode==0){
+        if (mode == 0) {
             ((ListViewHolder) holder).bindView(movies.get(position));
-        }else {
+        } else {
             ((CardViewHolder) holder).bindView(movies.get(position));
         }
     }
@@ -88,10 +89,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public CardViewHolder(View itemView) {
             super(itemView);
-            tv_movie_name   = itemView.findViewById(R.id.tv_movie_name);
+            tv_movie_name = itemView.findViewById(R.id.tv_movie_name);
             iv_movie_poster = itemView.findViewById(R.id.iv_movie_poster);
-            cv_root         = itemView.findViewById(R.id.cv_root);
-            rl_trans        = itemView.findViewById(R.id.rl_trans);
+            cv_root = itemView.findViewById(R.id.cv_root);
+            rl_trans = itemView.findViewById(R.id.rl_trans);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -106,6 +107,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Glide.with(itemView.getContext())
                     .load("https://image.tmdb.org/t/p/w500/" + results.getPoster_path())
                     .apply(new RequestOptions().centerCrop())
+                    .transition(DrawableTransitionOptions.withCrossFade(1000))
                     .into(iv_movie_poster);
             tv_movie_name.setText(results.getTitle());
         }
@@ -132,13 +134,14 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Glide.with(itemView.getContext())
                     .load("https://image.tmdb.org/t/p/w500/" + results.getPoster_path())
                     .apply(new RequestOptions().centerCrop())
+                    .transition(DrawableTransitionOptions.withCrossFade(1000))
                     .into(iv_movie_poster);
             tv_movie_name.setText(results.getTitle());
         }
     }
 
 
-   public interface Callbacks {
+    public interface Callbacks {
         void onItemClick(Results results);
     }
 }

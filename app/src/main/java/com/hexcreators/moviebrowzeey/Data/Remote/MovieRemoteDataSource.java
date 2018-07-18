@@ -51,6 +51,16 @@ public class MovieRemoteDataSource implements MovieDataSource {
     }
 
     @Override
+    public void getLocalMovies(@NonNull LoadLocalMoviesCallBack loadLocalMoviesCallBack) {
+
+    }
+
+    @Override
+    public void addMovie(Movie movie) {
+
+    }
+
+    @Override
     public void getMovie(@NonNull final Integer movieId, @NonNull final LoadMovieCallBack callBack) {
         MovieDataApiService movieDataApiService = RetrofitBase.getRetrofitInstance().create(MovieDataApiService.class);
 

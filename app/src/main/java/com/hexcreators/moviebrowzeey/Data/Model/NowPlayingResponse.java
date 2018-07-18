@@ -2,9 +2,12 @@ package com.hexcreators.moviebrowzeey.Data.Model;
 
 import java.util.List;
 
-public class NowPlayingResponse {
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
-    private List<Results> results;
+public class NowPlayingResponse extends RealmObject {
+
+    private RealmList<Results> results;
 
     private Dates dates;
 
@@ -19,7 +22,7 @@ public class NowPlayingResponse {
         return results;
     }
 
-    public void setResults(List<Results> results) {
+    public void setResults(RealmList<Results> results) {
         this.results = results;
     }
 

@@ -2,7 +2,10 @@ package com.hexcreators.moviebrowzeey.Data.Model;
 
 import java.util.List;
 
-public class Results {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
+public class Results  extends RealmObject {
 
     private Double vote_average;
 
@@ -18,7 +21,7 @@ public class Results {
 
     private String original_language;
 
-    private List<Integer> genre_ids;
+    private RealmList<Integer> genre_ids;
 
     private String release_date;
 
@@ -85,7 +88,7 @@ public class Results {
         return genre_ids;
     }
 
-    public void setGenre_ids(List<Integer> genre_ids) {
+    public void setGenre_ids(RealmList<Integer> genre_ids) {
         this.genre_ids = genre_ids;
     }
 

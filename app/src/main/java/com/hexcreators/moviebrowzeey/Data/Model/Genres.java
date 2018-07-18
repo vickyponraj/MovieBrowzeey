@@ -1,6 +1,8 @@
 package com.hexcreators.moviebrowzeey.Data.Model;
 
-public class Genres {
+import io.realm.RealmObject;
+
+public class Genres  extends RealmObject {
 
     private int id;
 

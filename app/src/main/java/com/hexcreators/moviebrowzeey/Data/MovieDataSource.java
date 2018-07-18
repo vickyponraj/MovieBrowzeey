@@ -11,6 +11,10 @@ public interface MovieDataSource {
 
     void getMovieSuggestions(@NonNull Integer id,@NonNull LoadMoviesCallBack callBack);
 
+    void getLocalMovies(@NonNull LoadLocalMoviesCallBack loadLocalMoviesCallBack);
+
+    void addMovie(Movie movie);
+
     interface LoadMovieCallBack{
 
         void onSuccess(Movie movie);
@@ -24,6 +28,16 @@ public interface MovieDataSource {
     interface LoadMoviesCallBack{
 
         void onSuccess(List<Results> movies);
+
+        void onFailure(Throwable throwable);
+
+        void onDataNotAvailable();
+
+    }
+
+    interface LoadLocalMoviesCallBack{
+
+        void onSuccess(List<Movie> movies);
 
         void onFailure(Throwable throwable);
 

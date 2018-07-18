@@ -1,6 +1,8 @@
 package com.hexcreators.moviebrowzeey.Data.Model;
 
-public class Production_countries {
+import io.realm.RealmObject;
+
+public class Production_countries  extends RealmObject {
 
     private String name;
 

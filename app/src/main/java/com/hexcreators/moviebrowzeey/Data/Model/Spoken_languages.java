@@ -1,6 +1,8 @@
 package com.hexcreators.moviebrowzeey.Data.Model;
 
-public class Spoken_languages {
+import io.realm.RealmObject;
+
+public class Spoken_languages extends RealmObject {
 
     private String iso_639_1;
 

@@ -2,6 +2,7 @@ package com.hexcreators.moviebrowzeey.MovieList;
 
 import android.util.Log;
 
+import com.hexcreators.moviebrowzeey.Data.Model.Movie;
 import com.hexcreators.moviebrowzeey.Data.Model.Results;
 import com.hexcreators.moviebrowzeey.Data.MovieDataSource;
 import com.hexcreators.moviebrowzeey.Data.MovieRepository;
@@ -18,10 +19,9 @@ public class MovieListPresenter implements MovieListContract.Presenter {
     public MovieListPresenter(MovieRepository movieRepository, MovieListContract.View view) {
         mView = view;
         mMovieRepository = movieRepository;
-        loadNowPlaying();
     }
 
-    private void loadNowPlaying() {
+    public void loadNowPlaying() {
         mMovieRepository.getMovies(new MovieDataSource.LoadMoviesCallBack() {
             @Override
             public void onSuccess(List<Results> movies) {
@@ -42,4 +42,25 @@ public class MovieListPresenter implements MovieListContract.Presenter {
     }
 
 
+    @Override
+    public void loadLocalMovies() {
+        mMovieRepository.getLocalMovies(new MovieDataSource.LoadLocalMoviesCallBack() {
+
+
+            @Override
+            public void onSuccess(List<Movie> movies) {
+                mView.setLocalMovies(movies);
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+
+            }
+        });
+    }
 }

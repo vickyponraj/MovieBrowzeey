@@ -2,7 +2,11 @@ package com.hexcreators.moviebrowzeey.Data.Model;
 
 import java.util.List;
 
-public class Movie {
+import io.realm.Realm;
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
+public class Movie extends RealmObject {
 
     private Integer budget;
 
@@ -10,13 +14,13 @@ public class Movie {
 
     private String backdrop_path;
 
-    private List<Genres> genres;
+    private RealmList<Genres> genres;
 
     private String status;
 
     private Integer runtime;
 
-    private List<Spoken_languages> spoken_languages;
+    private RealmList<Spoken_languages> spoken_languages;
 
     private Boolean adult;
 
@@ -24,7 +28,7 @@ public class Movie {
 
     private Integer id;
 
-    private List<Production_countries> production_countries;
+    private RealmList<Production_countries> production_countries;
 
     private String title;
 
@@ -32,9 +36,7 @@ public class Movie {
 
     private String overview;
 
-    private List<Production_companies> production_companies;
-
-    private Object belongs_to_collection;
+    private RealmList<Production_companies> production_companies;
 
     private String imdb_id;
 
@@ -83,7 +85,7 @@ public class Movie {
         return genres;
     }
 
-    public void setGenres(List<Genres> genres) {
+    public void setGenres(RealmList<Genres> genres) {
         this.genres = genres;
     }
 
@@ -107,7 +109,7 @@ public class Movie {
         return spoken_languages;
     }
 
-    public void setSpoken_languages(List<Spoken_languages> spoken_languages) {
+    public void setSpoken_languages(RealmList<Spoken_languages> spoken_languages) {
         this.spoken_languages = spoken_languages;
     }
 
@@ -139,7 +141,7 @@ public class Movie {
         return production_countries;
     }
 
-    public void setProduction_countries(List<Production_countries> production_countries) {
+    public void setProduction_countries(RealmList<Production_countries> production_countries) {
         this.production_countries = production_countries;
     }
 
@@ -171,16 +173,8 @@ public class Movie {
         return production_companies;
     }
 
-    public void setProduction_companies(List<Production_companies> production_companies) {
+    public void setProduction_companies(RealmList<Production_companies> production_companies) {
         this.production_companies = production_companies;
-    }
-
-    public Object getBelongs_to_collection() {
-        return belongs_to_collection;
-    }
-
-    public void setBelongs_to_collection(Object belongs_to_collection) {
-        this.belongs_to_collection = belongs_to_collection;
     }
 
     public String getImdb_id() {

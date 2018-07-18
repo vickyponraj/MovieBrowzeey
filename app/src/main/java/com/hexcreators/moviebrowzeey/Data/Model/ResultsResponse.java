@@ -2,9 +2,12 @@ package com.hexcreators.moviebrowzeey.Data.Model;
 
 import java.util.List;
 
-public class ResultsResponse {
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
-    private List<Results> results;
+public class ResultsResponse extends RealmObject {
+
+    private RealmList<Results> results;
 
     private Integer page;
 
@@ -13,12 +16,8 @@ public class ResultsResponse {
     private Integer total_results;
 
 
-    public List<Results> getResults() {
+    public RealmList<Results> getResults() {
         return results;
-    }
-
-    public void setResults(List<Results> results) {
-        this.results = results;
     }
 
     public Integer getPage() {
@@ -43,5 +42,9 @@ public class ResultsResponse {
 
     public void setTotal_results(Integer total_results) {
         this.total_results = total_results;
+    }
+
+    public void setResults(RealmList<Results> results) {
+        this.results = results;
     }
 }

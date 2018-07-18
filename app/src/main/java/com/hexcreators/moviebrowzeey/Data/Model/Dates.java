@@ -1,6 +1,8 @@
 package com.hexcreators.moviebrowzeey.Data.Model;
 
-public class Dates {
+import io.realm.RealmObject;
+
+public class Dates extends RealmObject {
 
     private String minimum;
 
