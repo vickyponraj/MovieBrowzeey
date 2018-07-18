@@ -119,6 +119,7 @@ public class MovieList extends BaseActivity implements MovieListContract.View {
     };
 
     private void openMovie(Results result) {
+
         Intent openMovie = new Intent(MovieList.this, MovieDetail.class);
         openMovie.putExtra(ClickedData_TAG, String.valueOf(result.getId()));
         startActivity(openMovie);
