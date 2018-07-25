@@ -102,6 +102,30 @@ public class MovieList extends BaseActivity implements MovieListContract.View {
     }
 
     @Override
+    public void showMessage(String message) {
+        snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
+        snackbar.show();
+    }
+
+    @Override
+    public void showMessage(int message) {
+        snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
+        snackbar.show();
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_INDEFINITE);
+        snackbar.show();
+    }
+
+    @Override
+    public void showErrorMessage(int message) {
+        snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_INDEFINITE);
+        snackbar.show();
+    }
+
+    @Override
     public void setMovies(List<Results> movies) {
         adapter.setMovies(movies);
     }

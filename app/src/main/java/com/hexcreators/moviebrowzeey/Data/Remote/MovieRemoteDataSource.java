@@ -15,6 +15,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.hexcreators.moviebrowzeey.Z_AppUtills.AppUtills.INVALID_API;
+
 public class MovieRemoteDataSource implements MovieDataSource {
 
     private static final String TAG = MovieRemoteDataSource.class.getSimpleName();
@@ -31,12 +33,18 @@ public class MovieRemoteDataSource implements MovieDataSource {
             public void onResponse(@NonNull Call<NowPlayingResponse> call, @NonNull Response<NowPlayingResponse> response) {
                 Log.d(TAG, "getMovies onResponse");
 
-                List<Results> results = response.body().getResults();
-                if (results != null) {
-                    Log.d(TAG, "getMovies != null");
-                    callBack.onSuccess(results);
-                } else {
-                    Log.d(TAG, "getMovies == null");
+                int code = response.code();
+                Log.d(TAG, "onResponse: "+code);
+                if(code==200){
+                    List<Results> results = response.body().getResults();
+                    if (results != null) {
+                        Log.d(TAG, "getMovies != null");
+                        callBack.onSuccess(results);
+                    } else {
+                        Log.d(TAG, "getMovies == null");
+                    }
+                }else {
+                    callBack.onFailure(new Exception(INVALID_API));
                 }
             }
 
@@ -69,7 +77,12 @@ public class MovieRemoteDataSource implements MovieDataSource {
         movie.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
-                callBack.onSuccess(response.body());
+                int code = response.code();
+                if(code==200){
+                    callBack.onSuccess(response.body());
+                }else {
+                    callBack.onFailure(new Exception(INVALID_API));
+                }
             }
 
             @Override
@@ -93,13 +106,21 @@ public class MovieRemoteDataSource implements MovieDataSource {
             public void onResponse(@NonNull Call<NowPlayingResponse> call, @NonNull Response<NowPlayingResponse> response) {
                 Log.d(TAG, "getMovies onResponse");
 
-                List<Results> results = response.body().getResults();
-                if (results != null) {
-                    Log.d(TAG, "getMovies != null");
-                    callBack.onSuccess(results);
-                } else {
-                    Log.d(TAG, "getMovies == null");
+                int code = response.code();
+                Log.d(TAG, "onResponse: "+code);
+                if(code==200){
+                    List<Results> results = response.body().getResults();
+                    if (results != null) {
+                        Log.d(TAG, "getMovies != null");
+                        callBack.onSuccess(results);
+                    } else {
+                        Log.d(TAG, "getMovies == null");
+                    }
+                }else {
+                    callBack.onFailure(new Exception(INVALID_API));
                 }
+
+
             }
 
             @Override

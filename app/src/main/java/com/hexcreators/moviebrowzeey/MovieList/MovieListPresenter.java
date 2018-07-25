@@ -9,6 +9,8 @@ import com.hexcreators.moviebrowzeey.Data.MovieRepository;
 
 import java.util.List;
 
+import static com.hexcreators.moviebrowzeey.Z_AppUtills.AppUtills.INVALID_API;
+
 public class MovieListPresenter implements MovieListContract.Presenter {
 
     private static final String TAG = MovieListPresenter.class.getSimpleName();
@@ -25,13 +27,17 @@ public class MovieListPresenter implements MovieListContract.Presenter {
         mMovieRepository.getMovies(new MovieDataSource.LoadMoviesCallBack() {
             @Override
             public void onSuccess(List<Results> movies) {
-                Log.d(TAG,"loadNowPlaying");
+                Log.d(TAG, "loadNowPlaying");
                 mView.setMovies(movies);
             }
 
             @Override
             public void onFailure(Throwable throwable) {
-
+                boolean b = throwable.getMessage().equalsIgnoreCase(INVALID_API);
+                if (b)
+                    mView.showErrorMessage(throwable.getMessage());
+                else
+                    mView.showMessage(throwable.getMessage());
             }
 
             @Override
@@ -54,7 +60,11 @@ public class MovieListPresenter implements MovieListContract.Presenter {
 
             @Override
             public void onFailure(Throwable throwable) {
-
+                boolean b = throwable.getMessage().equalsIgnoreCase(INVALID_API);
+                if (b)
+                    mView.showErrorMessage(throwable.getMessage());
+                else
+                    mView.showMessage(throwable.getMessage());
             }
 
             @Override

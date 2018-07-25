@@ -10,6 +10,7 @@ import com.hexcreators.moviebrowzeey.Data.Remote.MovieRemoteDataSource;
 public class AppUtills {
 
     public static final String ClickedData_TAG = "CLICKEDDATA_TAG";
+    public static final String INVALID_API = "Invalid API key: You must be granted a valid key";
 
     public static MovieRepository prepareDataSource(MovieRemoteDataSource instance_MovieRemoteDataSource, MovieLocalDataSource instance_MovieLocalDataSource) {
         return MovieRepository.getINSTANCE(instance_MovieRemoteDataSource, instance_MovieLocalDataSource);
