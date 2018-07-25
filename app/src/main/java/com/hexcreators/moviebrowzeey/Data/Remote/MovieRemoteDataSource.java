@@ -120,6 +120,6 @@ public class MovieRemoteDataSource implements MovieDataSource {
     }
 
     public String getApiKey() {
-        return "3efd320f7f7f2daee74f7a902fd51e9f";
+        return "";
     }
 }
