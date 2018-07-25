@@ -3,6 +3,8 @@
 
 Android App to Display Movies from themoviedb.org using their API
 
+Get API key from https://www.themoviedb.org and use it in MovieRemoteDataSource.class -> getApiKey()
+
 Database - Realm 
 
 Network  - Retrofit 2.0
