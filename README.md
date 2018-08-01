@@ -1,4 +1,4 @@
-# MovieBrowzeey
+# MovieBrowzeey - MVP
 
 
 Android App to Display Movies from themoviedb.org using their API
