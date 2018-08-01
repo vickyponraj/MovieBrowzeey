@@ -1,6 +1,5 @@
 # MovieBrowzeey - MVP
 
-## Inspired From https://github.com/googlesamples/android-architecture/tree/todo-mvp/
 
 Android App to Display Movies from themoviedb.org using their API
 
@@ -20,3 +19,7 @@ Github -https://github.com/vickyponraj/MovieBrowzeey
 Design - https://invis.io/H5N0Q078CXJ
 
 Project Files - https://drive.google.com/open?id=1xqlW-bk69rCQRpoahz5WR2PZAVQOR8ym
+
+
+## Inspired From https://github.com/googlesamples/android-architecture/tree/todo-mvp/
+
