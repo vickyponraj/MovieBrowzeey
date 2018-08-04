@@ -17,11 +17,11 @@ import static android.support.v4.util.Preconditions.checkNotNull;
 public class MovieRepository implements MovieDataSource {
 
     private static MovieRepository INSTANCE = null;
-    private final MovieRemoteDataSource movieRemoteDataSource;
-    private final MovieLocalDataSource movieLocalDataSource;
+    private final MovieDataSource movieRemoteDataSource;
+    private final MovieDataSource movieLocalDataSource;
     private Map<Integer, Movie> mCachedMovies;
 
-    private MovieRepository(MovieRemoteDataSource movieRemoteDataSource, MovieLocalDataSource movieLocalDataSource) {
+    private MovieRepository(MovieDataSource movieRemoteDataSource, MovieDataSource movieLocalDataSource) {
         this.movieRemoteDataSource = movieRemoteDataSource;
         this.movieLocalDataSource = movieLocalDataSource;
     }
